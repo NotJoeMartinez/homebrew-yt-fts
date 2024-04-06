@@ -5,8 +5,9 @@ class YtFts < Formula
     url "https://github.com/NotJoeMartinez/yt-fts/releases/download/v0.1.43/yt-fts-0.1.43.tar.gz"
     sha256 "3b2a54d39164b49b27d86bc78bdaed2f389d81ae1915242d5c08d5333185e6e0"
     version "0.1.43"
+    license "Unlicense"
   
-    depends_on "python@3.8"
+    depends_on "python@3.12"
 
     resource "annotated-types" do
         url "https://files.pythonhosted.org/packages/67/fe/8c7b275824c6d2cd17c93ee85d0ee81c090285b6d52f4876ccc47cf9c3c4/annotated_types-0.6.0.tar.gz"
@@ -17,11 +18,11 @@ class YtFts < Formula
         url "https://files.pythonhosted.org/packages/db/4d/3970183622f0330d3c23d9b8a5f52e365e50381fd484d08e3285104333d3/anyio-4.3.0.tar.gz"
         sha256 "f75253795a87df48568485fd18cdd2a3fa5c4f7c5be8e5e36637733fce06fed6"
     end
-
-      resource "asgiref" do
-        url "https://files.pythonhosted.org/packages/29/38/b3395cc9ad1b56d2ddac9970bc8f4141312dbaec28bc7c218b0dfafd0f42/asgiref-3.8.1.tar.gz"
-        sha256 "c343bd80a0bec947a9860adb4c432ffa7db769836c64238fc34bdc3fec84d590"
-      end
+    
+    resource "asgiref" do
+      url "https://files.pythonhosted.org/packages/29/38/b3395cc9ad1b56d2ddac9970bc8f4141312dbaec28bc7c218b0dfafd0f42/asgiref-3.8.1.tar.gz"
+      sha256 "c343bd80a0bec947a9860adb4c432ffa7db769836c64238fc34bdc3fec84d590"
+    end
       
       resource "backoff" do
         url "https://files.pythonhosted.org/packages/47/d7/5bbeb12c44d7c4f2fb5b56abce497eb5ed9f34d85701de869acedd602619/backoff-2.2.1.tar.gz"
