@@ -48,8 +48,6 @@ class YtFts < Formula
 
 
     def install
-        # python3 = which("python3.12")
-        virtualenv_create(libexec, python3)
         virtualenv_install_with_resources
     end
     
