@@ -11,16 +11,6 @@ class YtFts < Formula
   depends_on "python@3.12"
   depends_on "yt-dlp"
 
-  bottle do
-    rebuild 3
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:   "a4ee2bd9304a573511ea7cb3c898c5e528e69eaf91490e1c8dd95903ecdfefe0"
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "ae8211cef7d9393d8cf6d75181de266a6607c4e0d024dc650898d2b746eaf4e6"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "d56c69547e4f873cf87e174b4dba3fdc45b75fd6846406a30447c4bcfc012166"
-    sha256 cellar: :any_skip_relocation, sonoma:         "398ef4490a1a30e5d6bb02e5a8ca8670f4e6e6160787c461e0d86b8dd3c5f461"
-    sha256 cellar: :any_skip_relocation, ventura:        "641a4981c271e57e8b83eee82ba48a1282640480d11b7773113167a3087aff38"
-    sha256 cellar: :any_skip_relocation, monterey:       "8d6f0a9b0cf69dc1a3e98b78570bf8a455b7c4282978e743489d3f717b45f046"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "f8034f0e5e5df745091df486c4cb7c702100a33824231da836820c5f00cf9c33"
-  end
 
   depends_on "certifi"
   depends_on "python@3.12"
