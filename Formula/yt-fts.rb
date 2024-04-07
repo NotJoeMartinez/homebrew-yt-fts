@@ -10,7 +10,6 @@ class YtFts < Formula
 
   depends_on "python@3.12"
   depends_on "yt-dlp"
-  depends_on "bcrypt"
 
   resource "annotated-types" do
     url "https://files.pythonhosted.org/packages/67/fe/8c7b275824c6d2cd17c93ee85d0ee81c090285b6d52f4876ccc47cf9c3c4/annotated_types-0.6.0.tar.gz"
@@ -494,28 +493,6 @@ class YtFts < Formula
   end
 
   def install
-    # python3 = Formula["python@3.12"].opt_bin/"python3"
-    # system python3, *Language::Python.setup_install_args(libexec)
-
-    # resource("onnxruntime").stage do
-    #   system python3, "-m", "pip", "install", "--no-deps", "--prefix=#{libexec}", "onnxruntime-*.whl"
-    # end
-
-    # resource("pulsar-client").stage do
-    #   system python3, "-m", "pip", "install", "--no-deps", "--prefix=#{libexec}", "pulsar_client-*.whl"
-    # end
-
-    # system python3, "-m", "pip", "install", "--prefix=#{libexec}", "--no-deps", "."
-    # system python3, "-m", "pip", "install", "."
-    # python3 = Formula["python@3.12"].opt_bin/"python3"
-    # poetry = Formula["poetry"].opt_bin/"poetry"
-
-    # system poetry, "config", "virtualenvs.create", "false"
-    # system poetry, "build"
-    # system python3, "-m", "pip", "install", "--no-deps", "--prefix=#{libexec}", "dist/*.whl"
-    # bin.install Dir["#{libexec}/bin/*"
-    
-
     virtualenv_install_with_resources
   end
 
