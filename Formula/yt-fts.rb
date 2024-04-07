@@ -16,14 +16,14 @@ class YtFts < Formula
         sha256 "ca9853ad459e787e2192211578cc907e7594e294c7ccc834310722b41b9ca6de"
     end
 
-    resource "openai" do
-        url "https://files.pythonhosted.org/packages/f6/77/5853830ae66f7f195094bbe8de95d3e6a204801c5ee3538e97f9ef60de6c/openai-1.16.2.tar.gz"
-        sha256 "c93d5efe5b73b6cb72c4cd31823852d2e7c84a138c0af3cbe4a8eb32b1164ab2"
-    end
-
     resource "chromadb" do
         url "https://files.pythonhosted.org/packages/47/6b/a5465827d8017b658d18ad1e63d2dc31109dec717c6bd068e82485186f4b/chromadb-0.4.24.tar.gz"
         sha256 "a5c80b4e4ad9b236ed2d4899a5b9e8002b489293f2881cb2cadab5b199ee1c72"
+    end
+
+    resource "openai" do
+        url "https://files.pythonhosted.org/packages/f6/77/5853830ae66f7f195094bbe8de95d3e6a204801c5ee3538e97f9ef60de6c/openai-1.16.2.tar.gz"
+        sha256 "c93d5efe5b73b6cb72c4cd31823852d2e7c84a138c0af3cbe4a8eb32b1164ab2"
     end
 
     resource "requests" do
@@ -48,8 +48,6 @@ class YtFts < Formula
 
 
     def install
-        # python3 = which("python3.12")
-        virtualenv_create(libexec, python3)
         virtualenv_install_with_resources
     end
     
