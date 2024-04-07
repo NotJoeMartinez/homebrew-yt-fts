@@ -10,9 +10,6 @@ class YtFts < Formula
 
   depends_on "python@3.12"
   depends_on "yt-dlp"
-  # depends_on "onnxruntime"
-  # depends_on "bcrypt"
-  # depends_on "pulsar-client"
 
   resource "annotated-types" do
     url "https://files.pythonhosted.org/packages/67/fe/8c7b275824c6d2cd17c93ee85d0ee81c090285b6d52f4876ccc47cf9c3c4/annotated_types-0.6.0.tar.gz"
@@ -64,10 +61,10 @@ class YtFts < Formula
     sha256 "f30c3cb33b24454a82faecaf01b19c18562b1e89558fb6c56de4d9118a032fd5"
   end
 
-  # resource "chroma-hnswlib" do
-  #   url "https://files.pythonhosted.org/packages/c0/59/1224cbae62c7b84c84088cdf6c106b9b2b893783c000d22c442a1672bc75/chroma-hnswlib-0.7.3.tar.gz"
-  #   sha256 "b6137bedde49fffda6af93b0297fe00429fc61e5a072b1ed9377f909ed95a932"
-  # end
+  resource "chroma-hnswlib" do
+    url "https://files.pythonhosted.org/packages/c0/59/1224cbae62c7b84c84088cdf6c106b9b2b893783c000d22c442a1672bc75/chroma-hnswlib-0.7.3.tar.gz"
+    sha256 "b6137bedde49fffda6af93b0297fe00429fc61e5a072b1ed9377f909ed95a932"
+  end
 
   resource "chromadb" do
     url "https://files.pythonhosted.org/packages/47/6b/a5465827d8017b658d18ad1e63d2dc31109dec717c6bd068e82485186f4b/chromadb-0.4.24.tar.gz"
@@ -304,11 +301,6 @@ class YtFts < Formula
     sha256 "25b5d0b42fd000320bd7830b349e3b696435f3b329810427a6bcce6a5492cc5c"
   end
 
-  # resource "pulsar-client" do
-  #   url ""
-  #   sha256 ""
-  # end
-
   resource "pyasn1" do
     url "https://files.pythonhosted.org/packages/4a/a3/d2157f333900747f20984553aca98008b6dc843eb62f3a36030140ccec0d/pyasn1-0.6.0.tar.gz"
     sha256 "3a35ab2c4b5ef98e17dfdec8ab074046fbda76e281c5a706ccd82328cfc8f64c"
@@ -490,17 +482,33 @@ class YtFts < Formula
   end
 
 
-
-  # def install
-  #   virtualenv_create(libexec, "python3.12")
-  #   virtualenv_install_with_resources
-  # end
-  def install
-    # python3 = which("python3.12")
-    # virtualenv_create(libexec, python3)
-    virtualenv_install_with_resources
+  resource "onnxruntime" do
+    url "https://files.pythonhosted.org/packages/a1/a2/00ea929ccf9b4702af11e13fa52e9ac607aecc867b041ffcbe646e29f880/onnxruntime-1.17.1-cp312-cp312-macosx_11_0_universal2.whl"
+    sha256 "40f08e378e0f85929712a2b2c9b9a9cc400a90c8a8ca741d1d92c00abec60843"
   end
 
+  resource "pulsar-client" do
+    url "https://files.pythonhosted.org/packages/0f/a3/02b50d7abc5537438d44ba94342dbb78261ee4a0ae5620b4553ae233525c/pulsar_client-3.4.0-cp312-cp312-macosx_10_15_universal2.whl"
+    sha256 "1e077a4839be3ead3de3f05b4c244269dca2df07f47cea0b90544c7e9dc1642f"
+  end
+
+  def install
+    python3 = Formula["python@3.12"].opt_bin/"python3"
+    system python3, *Language::Python.setup_install_args(prefix)
+
+    resource("onnxruntime").stage do
+      system python3, "-m", "pip", "install", "--no-deps", "--prefix=#{prefix}", "onnxruntime-*.whl"
+    end
+
+    resource("pulsar-client").stage do
+      system python3, "-m", "pip", "install", "--no-deps", "--prefix=#{prefix}", "pulsar_client-*.whl"
+    end
+
+    # system python_exe, "-m", "pip", "install", "--prefix=#{libexec}", "--no-deps", "."
+    system python3, "-m", "pip", "install", "--prefix=#{prefix}", "--no-deps", "."
+
+    # virtualenv_install_with_resources
+  end
 
   test do
     system bin/"yt-fts", "--version"
