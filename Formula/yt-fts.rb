@@ -8,13 +8,13 @@ class YtFts < Formula
   version "0.1.47"
   license "Unlicense"
 
-  depends_on "rust" => :build #for bcrypt
   depends_on "cmake" => :build # for hnswlib
+  depends_on "rust" => :build # for bcrypt
   depends_on "python@3.12"
-  depends_on "yt-dlp"
   depends_on "onnxruntime"
   depends_on "numpy" 
-  depends_on "certifi" 
+  depends_on "certifi"
+  depends_on "yt-dlp"
 
   resource "annotated-types" do
     url "https://files.pythonhosted.org/packages/67/fe/8c7b275824c6d2cd17c93ee85d0ee81c090285b6d52f4876ccc47cf9c3c4/annotated_types-0.6.0.tar.gz"
@@ -55,7 +55,6 @@ class YtFts < Formula
     url "https://files.pythonhosted.org/packages/b3/4d/27a3e6dd09011649ad5210bdf963765bc8fa81a0827a4fc01bafd2705c5b/cachetools-5.3.3.tar.gz"
     sha256 "ba29e2dfa0b8b556606f097407ed1aa62080ee108ab0dc5ec9d6a723a007d105"
   end
-
 
   resource "charset-normalizer" do
     url "https://files.pythonhosted.org/packages/63/09/c1bc53dab74b1816a00d8d030de5bf98f724c52c1635e07681d312f20be8/charset-normalizer-3.3.2.tar.gz"
@@ -231,7 +230,6 @@ class YtFts < Formula
     url "https://files.pythonhosted.org/packages/e0/47/dd32fa426cc72114383ac549964eecb20ecfd886d1e5ccf5340b55b02f57/mpmath-1.3.0.tar.gz"
     sha256 "7a28eb2a9774d00c7bc92411c19a89209d5da7c4c9a9e227be8330a23a25b91f"
   end
-
 
   resource "oauthlib" do
     url "https://files.pythonhosted.org/packages/6d/fa/fbf4001037904031639e6bfbfc02badfc7e12f137a8afa254df6c4c8a670/oauthlib-3.2.2.tar.gz"
@@ -519,9 +517,7 @@ class YtFts < Formula
   end
 
   test do
-
     # Test basic functionality
     assert_match "yt_fts version: 0.1.47", shell_output("#{bin}/yt-fts --version")
-
   end
 end
