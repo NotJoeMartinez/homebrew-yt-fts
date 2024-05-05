@@ -521,8 +521,6 @@ class YtFts < Formula
   test do
 
     # Test basic functionality
-    system bin/"yt-fts", "--version"
-
     assert_match "yt_fts version: 0.1.47", shell_output("#{bin}/yt-fts --version")
 
   end
