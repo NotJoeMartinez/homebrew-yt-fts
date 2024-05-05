@@ -3,13 +3,18 @@ class YtFts < Formula
 
   desc "Search all of a YouTube channel from the command line"
   homepage "https://github.com/NotJoeMartinez/yt-fts"
-  url "https://github.com/NotJoeMartinez/yt-fts/releases/download/v0.1.43/yt-fts-0.1.43.tar.gz"
-  sha256 "3b2a54d39164b49b27d86bc78bdaed2f389d81ae1915242d5c08d5333185e6e0"
-  version "0.1.43"
+  url "https://files.pythonhosted.org/packages/2f/26/ea38dd55050930af0e06f2ecce181afbf5ce997465716142d8e25d9b14db/yt-fts-0.1.44.tar.gz"
+  sha256 "a5b4bca7a609f8328d8348fc3195d49e2d78d4df841b787ed63d0bb0a1c17fba"
+  version "0.1.44"
   license "Unlicense"
 
-  depends_on "python@3.12"
+  depends_on "rust" => :build #for bcrypt
+  depends_on "cmake" => :build # for hnswlib
+  depends_on "python3"
   depends_on "yt-dlp"
+  depends_on "onnxruntime"
+  depends_on "numpy" 
+  depends_on "certifi" 
 
   resource "annotated-types" do
     url "https://files.pythonhosted.org/packages/67/fe/8c7b275824c6d2cd17c93ee85d0ee81c090285b6d52f4876ccc47cf9c3c4/annotated_types-0.6.0.tar.gz"
@@ -32,8 +37,8 @@ class YtFts < Formula
   end
 
   resource "bcrypt" do
-    url "https://files.pythonhosted.org/packages/72/07/6a6f2047a9dc9d012b7b977e4041d37d078b76b44b7ee4daf331c1e6fb35/bcrypt-4.1.2.tar.gz"
-    sha256 "33313a1200a3ae90b75587ceac502b048b840fc69e7f7a0905b5f87fac7a1258"
+    url "https://files.pythonhosted.org/packages/ca/e9/0b36987abbcd8c9210c7b86673d88ff0a481b4610630710fb80ba5661356/bcrypt-4.1.3.tar.gz"
+    sha256 "2ee15dd749f5952fe3f0430d0ff6b74082e159c50332a1413d51b5689cf06623"
   end
 
   resource "beautifulsoup4" do
@@ -51,10 +56,6 @@ class YtFts < Formula
     sha256 "ba29e2dfa0b8b556606f097407ed1aa62080ee108ab0dc5ec9d6a723a007d105"
   end
 
-  resource "certifi" do
-    url "https://files.pythonhosted.org/packages/71/da/e94e26401b62acd6d91df2b52954aceb7f561743aa5ccc32152886c76c96/certifi-2024.2.2.tar.gz"
-    sha256 "0569859f95fc761b18b45ef421b1290a0f65f147e92a1e5eb3e635f9a5e4e66f"
-  end
 
   resource "charset-normalizer" do
     url "https://files.pythonhosted.org/packages/63/09/c1bc53dab74b1816a00d8d030de5bf98f724c52c1635e07681d312f20be8/charset-normalizer-3.3.2.tar.gz"
@@ -96,14 +97,29 @@ class YtFts < Formula
     sha256 "2fa77c6fd8940f116ee1d6b94a2f90b13b5ea8d019b98bc8bafdcabcdd9bdbed"
   end
 
+  resource "dnspython" do
+    url "https://files.pythonhosted.org/packages/37/7d/c871f55054e403fdfd6b8f65fd6d1c4e147ed100d3e9f9ba1fe695403939/dnspython-2.6.1.tar.gz"
+    sha256 "e8f0f9c23a7b7cb99ded64e6c3a6f3e701d78f50c55e002b839dea7225cff7cc"
+  end
+
+  resource "email-validator" do
+    url "https://files.pythonhosted.org/packages/63/82/2914bff80ebee8c027802a664ad4b4caad502cd594e358f76aff395b5e56/email_validator-2.1.1.tar.gz"
+    sha256 "200a70680ba08904be6d1eef729205cc0d687634399a5924d842533efb824b84"
+  end
+
   resource "fastapi" do
-    url "https://files.pythonhosted.org/packages/6d/f7/c6a62efe7f0ff70721392592bde14c69651868dca198d7ace51a1019b479/fastapi-0.110.1.tar.gz"
-    sha256 "6feac43ec359dfe4f45b2c18ec8c94edb8dc2dfc461d417d9e626590c071baad"
+    url "https://files.pythonhosted.org/packages/0e/1f/f4a99e92c583780787e04b05aa9d8a8db9ec76d091d81545948a006f5b44/fastapi-0.111.0.tar.gz"
+    sha256 "b9db9dd147c91cb8b769f7183535773d8741dd46f9dc6676cd82eab510228cd7"
+  end
+
+  resource "fastapi-cli" do
+    url "https://files.pythonhosted.org/packages/39/1a/132f46e6a7122970a102fca6f71baa3b574be1ecac0f6888c68e6625fa33/fastapi_cli-0.0.2.tar.gz"
+    sha256 "589565ba758432632eadcf7b950e0ec76bb283b549784d9df17f261a8a9de476"
   end
 
   resource "filelock" do
-    url "https://files.pythonhosted.org/packages/db/97/3f028f216da17ab0500550a6bb0f26bf39b07848348f63cce44b89829af9/filelock-3.13.3.tar.gz"
-    sha256 "a79895a25bbefdf55d1a2a0a80968f7dbb28edcd6d4234a0afb3f37ecde4b546"
+    url "https://files.pythonhosted.org/packages/06/ae/f8e03746f0b62018dcf1120f5ad0a1db99e55991f2cda0cf46edc8b897ea/filelock-3.14.0.tar.gz"
+    sha256 "6ea72da3be9b8c82afd3edcf99f2fffbb5076335a5ae4d03248bb5b6c3eae78a"
   end
 
   resource "flatbuffers" do
@@ -127,8 +143,8 @@ class YtFts < Formula
   end
 
   resource "grpcio" do
-    url "https://files.pythonhosted.org/packages/c7/bb/d01494037edee2d8e024cac8049b169b2723186b01cebb495ccf677bbba9/grpcio-1.62.1.tar.gz"
-    sha256 "6c455e008fa86d9e9a9d85bb76da4277c0d7d9668a3bfa70dbe86e9f3c759947"
+    url "https://files.pythonhosted.org/packages/0c/2a/23943e19b4bbbdad60a9d881e44cd53bb48b31c7419ebb7b983edfbbb708/grpcio-1.63.0.tar.gz"
+    sha256 "f3023e14805c61bc439fb40ca545ac3d5740ce66120a678a3c6c2c55b70343d1"
   end
 
   resource "h11" do
@@ -152,8 +168,8 @@ class YtFts < Formula
   end
 
   resource "huggingface-hub" do
-    url "https://files.pythonhosted.org/packages/42/4c/1ee8ca0aebca6ac985b65c65a443015dec969c2ed40e3599f3a801312d48/huggingface_hub-0.22.2.tar.gz"
-    sha256 "32e9a9a6843c92f253ff9ca16b9985def4d80a93fb357af5353f770ef74a81be"
+    url "https://files.pythonhosted.org/packages/63/9b/7ba10dafb38e4e4ea19f616087722db564f1fe8551b3825cb507351ba085/huggingface_hub-0.23.0.tar.gz"
+    sha256 "7126dedd10a4c6fac796ced4d87a8cf004efc722a5125c2c09299017fa366fa9"
   end
 
   resource "humanfriendly" do
@@ -162,8 +178,8 @@ class YtFts < Formula
   end
 
   resource "idna" do
-    url "https://files.pythonhosted.org/packages/bf/3f/ea4b9117521a1e9c50344b909be7886dd00a519552724809bb1f486986c2/idna-3.6.tar.gz"
-    sha256 "9ecdbbd083b06798ae1e86adcbfe8ab1479cf864e4ee30fe4e46a003d12491ca"
+    url "https://files.pythonhosted.org/packages/21/ed/f86a79a07470cb07819390452f178b3bef1d375f2ec021ecfc709fc7cf07/idna-3.7.tar.gz"
+    sha256 "028ff3aadf0609c1fd278d8ea3089299412a7a8b9bd005dd08b9f8285bcb5cfc"
   end
 
   resource "importlib-metadata" do
@@ -176,6 +192,11 @@ class YtFts < Formula
     sha256 "cdb2b453b8046ca4e3798eb1d84f3cce1446a0e8e7b5ef4efb600f19fc398145"
   end
 
+  resource "Jinja2" do
+    url "https://files.pythonhosted.org/packages/b2/5e/3a21abf3cd467d7876045335e681d276ac32492febe6d98ad89562d1a7e1/Jinja2-3.1.3.tar.gz"
+    sha256 "ac8bd6544d4bb2c9792bf3a159e80bba8fda7f07e81bc3aed565432d5925ba90"
+  end
+
   resource "kubernetes" do
     url "https://files.pythonhosted.org/packages/de/07/d01320a808abaab3426db63476adcb31f7e23fe8c08aef175d7883ea978a/kubernetes-29.0.0.tar.gz"
     sha256 "c4812e227ae74d07d53c88293e564e54b850452715a59a927e7e1bc6b9a60459"
@@ -184,6 +205,11 @@ class YtFts < Formula
   resource "markdown-it-py" do
     url "https://files.pythonhosted.org/packages/38/71/3b932df36c1a044d397a1f92d1cf91ee0a503d91e470cbd670aa66b07ed0/markdown-it-py-3.0.0.tar.gz"
     sha256 "e3f60a94fa066dc52ec76661e37c851cb232d92f9886b15cb560aaada2df8feb"
+  end
+
+  resource "MarkupSafe" do
+    url "https://files.pythonhosted.org/packages/87/5b/aae44c6655f3801e81aa3eef09dbbf012431987ba564d7231722f68df02d/MarkupSafe-2.1.5.tar.gz"
+    sha256 "d283d37a890ba4c1ae73ffadf8046435c76e7bc2247bbb63c00bd1a709c6544b"
   end
 
   resource "mdurl" do
@@ -206,10 +232,6 @@ class YtFts < Formula
     sha256 "7a28eb2a9774d00c7bc92411c19a89209d5da7c4c9a9e227be8330a23a25b91f"
   end
 
-  resource "numpy" do
-    url "https://files.pythonhosted.org/packages/65/6e/09db70a523a96d25e115e71cc56a6f9031e7b8cd166c1ac8438307c14058/numpy-1.26.4.tar.gz"
-    sha256 "2a02aba9ed12e4ac4eb3ea9421c420301a0c6460d9830d74a9df87efa4912010"
-  end
 
   resource "oauthlib" do
     url "https://files.pythonhosted.org/packages/6d/fa/fbf4001037904031639e6bfbfc02badfc7e12f137a8afa254df6c4c8a670/oauthlib-3.2.2.tar.gz"
@@ -272,8 +294,8 @@ class YtFts < Formula
   end
 
   resource "orjson" do
-    url "https://files.pythonhosted.org/packages/2c/b1/10d5314003aeac7cb27824f502eedcf4f2705efc1b38f70db247e9ff99b5/orjson-3.10.0.tar.gz"
-    sha256 "ba4d8cac5f2e2cff36bea6b6481cdb92b38c202bcec603d6f5ff91960595a1ed"
+    url "https://files.pythonhosted.org/packages/f8/16/c10c42b69beeebe8bd136ee28b76762837479462787be57f11e0ab5d6f5d/orjson-3.10.3.tar.gz"
+    sha256 "2b166507acae7ba2f7c315dcf185a9111ad5e992ac81f2d507aac39193c2c818"
   end
 
   resource "overrides" do
@@ -287,8 +309,8 @@ class YtFts < Formula
   end
 
   resource "pluggy" do
-    url "https://files.pythonhosted.org/packages/54/c6/43f9d44d92aed815e781ca25ba8c174257e27253a94630d21be8725a2b59/pluggy-1.4.0.tar.gz"
-    sha256 "8c85c2876142a764e5b7548e7d9a0e0ddb46f5185161049a79b7e974454223be"
+    url "https://files.pythonhosted.org/packages/96/2d/02d4312c973c6050a18b314a5ad0b3210edb65a906f868e31c111dede4a6/pluggy-1.5.0.tar.gz"
+    sha256 "2cffa88e94fdc978c4c574f15f9e59b7f4201d439195c3715ca9e2486f1d0cf1"
   end
 
   resource "posthog" do
@@ -312,18 +334,18 @@ class YtFts < Formula
   end
 
   resource "pydantic" do
-    url "https://files.pythonhosted.org/packages/4b/de/38b517edac45dd022e5d139aef06f9be4762ec2e16e2b14e1634ba28886b/pydantic-2.6.4.tar.gz"
-    sha256 "b1704e0847db01817624a6b86766967f552dd9dbf3afba4004409f908dcc84e6"
+    url "https://files.pythonhosted.org/packages/1f/74/0d009e056c2bd309cdc053b932d819fcb5ad3301fc3e690c097e1de3e714/pydantic-2.7.1.tar.gz"
+    sha256 "e9dbb5eada8abe4d9ae5f46b9939aead650cd2b68f249bb3a8139dbe125803cc"
   end
 
   resource "pydantic-core" do
-    url "https://files.pythonhosted.org/packages/77/3f/65dbe5231946fe02b4e6ea92bc303d2462f45d299890fd5e8bfe4d1c3d66/pydantic_core-2.16.3.tar.gz"
-    sha256 "1cac689f80a3abab2d3c0048b29eea5751114054f032a941a32de4c852c59cad"
+    url "https://files.pythonhosted.org/packages/e9/23/a609c50e53959eb96393e42ae4891901f699aaad682998371348650a6651/pydantic_core-2.18.2.tar.gz"
+    sha256 "2e29d20810dfc3043ee13ac7d9e25105799817683348823f305ab3f349b9386e"
   end
 
   resource "Pygments" do
-    url "https://files.pythonhosted.org/packages/55/59/8bccf4157baf25e4aa5a0bb7fa3ba8600907de105ebc22b0c78cfbf6f565/pygments-2.17.2.tar.gz"
-    sha256 "da46cec9fd2de5be3a8a784f434e4c4ab670b4ff54d605c4c2717e9d49c4c367"
+    url "https://files.pythonhosted.org/packages/8e/62/8336eff65bcbc8e4cb5d05b55faf041285951b6e80f33e2bff2024788f31/pygments-2.18.0.tar.gz"
+    sha256 "786ff802f32e91311bff3889f6e9a86e81505fe99f2735bb6d60ae0c5004f199"
   end
 
   resource "PyPika" do
@@ -331,9 +353,9 @@ class YtFts < Formula
     sha256 "838836a61747e7c8380cd1b7ff638694b7a7335345d0f559b04b2cd832ad5378"
   end
 
-  resource "pyproject_hooks" do
-    url "https://files.pythonhosted.org/packages/25/c1/374304b8407d3818f7025457b7366c8e07768377ce12edfe2aa58aa0f64c/pyproject_hooks-1.0.0.tar.gz"
-    sha256 "f271b298b97f5955d53fb12b72c1fb1948c22c1a6b70b315c54cedaca0264ef5"
+  resource "pyproject-hooks" do
+    url "https://files.pythonhosted.org/packages/c7/07/6f63dda440d4abb191b91dc383b472dae3dd9f37e4c1e4a5c3db150531c6/pyproject_hooks-1.1.0.tar.gz"
+    sha256 "4b37730834edbd6bd37f26ece6b44802fb1c1ee2ece0e54ddff8bfc06db86965"
   end
 
   resource "python-dateutil" do
@@ -344,6 +366,11 @@ class YtFts < Formula
   resource "python-dotenv" do
     url "https://files.pythonhosted.org/packages/bc/57/e84d88dfe0aec03b7a2d4327012c1627ab5f03652216c63d49846d7a6c58/python-dotenv-1.0.1.tar.gz"
     sha256 "e324ee90a023d808f1959c46bcbc04446a10ced277783dc6ee09987c37ec10ca"
+  end
+
+  resource "python-multipart" do
+    url "https://files.pythonhosted.org/packages/5c/0f/9c55ac6c84c0336e22a26fa84ca6c51d58d7ac3a2d78b0dfa8748826c883/python_multipart-0.0.9.tar.gz"
+    sha256 "03f54688c663f1b7977105f021043b0793151e4cb1c1a9d4a11fc13d622c4026"
   end
 
   resource "PyYAML" do
@@ -422,23 +449,28 @@ class YtFts < Formula
   end
 
   resource "tokenizers" do
-    url "https://files.pythonhosted.org/packages/c0/44/625db94e91c6196b6574359fa70bfe28e8eabf57a1b894f8f0ec69727fd1/tokenizers-0.15.2.tar.gz"
-    sha256 "e6e9c6e019dd5484be5beafc775ae6c925f4c69a3487040ed09b45e13df2cb91"
+    url "https://files.pythonhosted.org/packages/48/04/2071c150f374aab6d5e92aaec38d0f3c368d227dd9e0469a1f0966ac68d1/tokenizers-0.19.1.tar.gz"
+    sha256 "ee59e6680ed0fdbe6b724cf38bd70400a0c1dd623b07ac729087270caeac88e3"
   end
 
   resource "tqdm" do
-    url "https://files.pythonhosted.org/packages/ea/85/3ce0f9f7d3f596e7ea57f4e5ce8c18cb44e4a9daa58ddb46ee0d13d6bff8/tqdm-4.66.2.tar.gz"
-    sha256 "6cd52cdf0fef0e0f543299cfc96fec90d7b8a7e88745f411ec33eb44d5ed3531"
+    url "https://files.pythonhosted.org/packages/5a/c0/b7599d6e13fe0844b0cda01b9aaef9a0e87dbb10b06e4ee255d3fa1c79a2/tqdm-4.66.4.tar.gz"
+    sha256 "e4d936c9de8727928f3be6079590e97d9abfe8d39a590be678eb5919ffc186bb"
   end
 
   resource "typer" do
-    url "https://files.pythonhosted.org/packages/35/fe/f9e38794565b83343f3c67b4b596e0186f748e536bcaf87cf6bc27cd1da7/typer-0.12.1.tar.gz"
-    sha256 "72d218ef3c686aed9c6ff3ca25b238aee0474a1628b29c559b18b634cfdeca88"
+    url "https://files.pythonhosted.org/packages/ac/0a/d55af35db5f50f486e3eda0ada747eed773859e2699d3ce570b682a9b70a/typer-0.12.3.tar.gz"
+    sha256 "49e73131481d804288ef62598d97a1ceef3058905aa536a1134f90891ba35482"
   end
 
   resource "typing-extensions" do
     url "https://files.pythonhosted.org/packages/f6/f3/b827b3ab53b4e3d8513914586dcca61c355fa2ce8252dea4da56e67bf8f2/typing_extensions-4.11.0.tar.gz"
     sha256 "83f085bd5ca59c80295fc2a82ab5dac679cbe02b9f33f7d83af68e241bea51b0"
+  end
+
+  resource "ujson" do
+    url "https://files.pythonhosted.org/packages/6e/54/6f2bdac7117e89a47de4511c9f01732a283457ab1bf856e1e51aa861619e/ujson-5.9.0.tar.gz"
+    sha256 "89cc92e73d5501b8a7f48575eeb14ad27156ad092c2e9fc7e3cf949f07e75532"
   end
 
   resource "urllib3" do
@@ -462,8 +494,8 @@ class YtFts < Formula
   end
 
   resource "websocket-client" do
-    url "https://files.pythonhosted.org/packages/20/07/2a94288afc0f6c9434d6709c5320ee21eaedb2f463ede25ed9cf6feff330/websocket-client-1.7.0.tar.gz"
-    sha256 "10e511ea3a8c744631d3bd77e61eb17ed09304c413ad42cf6ddfa4c7787e8fe6"
+    url "https://files.pythonhosted.org/packages/e6/30/fba0d96b4b5fbf5948ed3f4681f7da2f9f64512e1d303f94b4cc174c24a5/websocket_client-1.8.0.tar.gz"
+    sha256 "3239df9f44da632f96012472805d40a23281a991027ce11d2f45a6f24ac4c3da"
   end
 
   resource "websockets" do
@@ -481,24 +513,12 @@ class YtFts < Formula
     sha256 "2884ed22e7d8961de1c9a05142eb69a247f120291bc0206a00a7642f09b5b715"
   end
 
-
-  resource "onnxruntime" do
-    url "https://files.pythonhosted.org/packages/a1/a2/00ea929ccf9b4702af11e13fa52e9ac607aecc867b041ffcbe646e29f880/onnxruntime-1.17.1-cp312-cp312-macosx_11_0_universal2.whl"
-    sha256 "40f08e378e0f85929712a2b2c9b9a9cc400a90c8a8ca741d1d92c00abec60843"
-  end
-
-  resource "pulsar-client" do
-    url "https://files.pythonhosted.org/packages/0f/a3/02b50d7abc5537438d44ba94342dbb78261ee4a0ae5620b4553ae233525c/pulsar_client-3.4.0-cp312-cp312-macosx_10_15_universal2.whl"
-    sha256 "1e077a4839be3ead3de3f05b4c244269dca2df07f47cea0b90544c7e9dc1642f"
-  end
-
   def install
+    virtualenv_create(libexec, "python3")
     virtualenv_install_with_resources
   end
 
   test do
-    system bin/"yt-fts", "--version"
+    false
   end
-
 end
-

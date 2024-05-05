@@ -35,3 +35,21 @@ end
 
 
 ```
+
+### Testing 
+
+```
+python3 -m venv .venv
+source .venv/bin/activate
+pip install yt-fts 
+pip install homebrew-pypi-poet
+poet -f yt-fts > new_packages.rb
+```
+
+
+Getting dependency tree
+```
+pipdeptree 
+```
+
+
