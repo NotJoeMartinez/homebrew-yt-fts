@@ -512,7 +512,7 @@ class YtFts < Formula
   end
 
   def install
-    virtualenv_create(libexec, "python3")
+    virtualenv_create(libexec, "python")
     virtualenv_install_with_resources
   end
 
