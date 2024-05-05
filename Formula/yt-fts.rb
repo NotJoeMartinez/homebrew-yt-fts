@@ -4,16 +4,16 @@ class YtFts < Formula
   desc "Search all of a YouTube channel from the command-line"
   homepage "https://github.com/NotJoeMartinez/yt-fts"
   url "https://files.pythonhosted.org/packages/9b/35/eb19cdc9b957c3366422bb89a3e33dc6bc102fdb93987c7fbd4fd7823df5/yt_fts-0.1.47.tar.gz"
-  sha256 "101290acfb62ada68f762ed30c1b65f7ff1fdafa0d545bde992389ac4a72d825"
   version "0.1.47"
+  sha256 "101290acfb62ada68f762ed30c1b65f7ff1fdafa0d545bde992389ac4a72d825"
   license "Unlicense"
 
   depends_on "cmake" => :build # for hnswlib
   depends_on "rust" => :build # for bcrypt
-  depends_on "python@3.12"
-  depends_on "onnxruntime"
-  depends_on "numpy" 
   depends_on "certifi"
+  depends_on "numpy"
+  depends_on "onnxruntime"
+  depends_on "python@3.12"
   depends_on "yt-dlp"
 
   resource "annotated-types" do
