@@ -1,7 +1,7 @@
 class YtFts < Formula
   include Language::Python::Virtualenv
 
-  desc "Search all of a YouTube channel from the command line"
+  desc "Search all of a YouTube channel from the command-line"
   homepage "https://github.com/NotJoeMartinez/yt-fts"
   url "https://files.pythonhosted.org/packages/9b/35/eb19cdc9b957c3366422bb89a3e33dc6bc102fdb93987c7fbd4fd7823df5/yt_fts-0.1.47.tar.gz"
   sha256 "101290acfb62ada68f762ed30c1b65f7ff1fdafa0d545bde992389ac4a72d825"
@@ -10,7 +10,7 @@ class YtFts < Formula
 
   depends_on "rust" => :build #for bcrypt
   depends_on "cmake" => :build # for hnswlib
-  depends_on "python3"
+  depends_on "python@3.12"
   depends_on "yt-dlp"
   depends_on "onnxruntime"
   depends_on "numpy" 
