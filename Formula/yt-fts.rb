@@ -3,9 +3,9 @@ class YtFts < Formula
 
   desc "Search all of a YouTube channel from the command line"
   homepage "https://github.com/NotJoeMartinez/yt-fts"
-  url "https://files.pythonhosted.org/packages/2f/26/ea38dd55050930af0e06f2ecce181afbf5ce997465716142d8e25d9b14db/yt-fts-0.1.44.tar.gz"
-  sha256 "a5b4bca7a609f8328d8348fc3195d49e2d78d4df841b787ed63d0bb0a1c17fba"
-  version "0.1.44"
+  url "https://files.pythonhosted.org/packages/9b/35/eb19cdc9b957c3366422bb89a3e33dc6bc102fdb93987c7fbd4fd7823df5/yt_fts-0.1.47.tar.gz"
+  sha256 "101290acfb62ada68f762ed30c1b65f7ff1fdafa0d545bde992389ac4a72d825"
+  version "0.1.47"
   license "Unlicense"
 
   depends_on "rust" => :build #for bcrypt
@@ -523,7 +523,6 @@ class YtFts < Formula
     # Test basic functionality
     system bin/"yt-fts", "--version"
 
-    # yt_fts version: 0.1.43
     assert_match "yt_fts version: 0.1.44", shell_output("#{bin}/yt-fts --version")
 
   end
